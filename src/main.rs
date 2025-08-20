@@ -1,5 +1,6 @@
 // Alternatif basit saat fonksiyonu
 mod bedingung_if_else;
+mod guessing_game;
 
 fn main() {
     println!("Hello, world!");
@@ -31,4 +32,8 @@ fn simple_greeting() {
     };
     
     println!("Saat: {}:xx - {}", hour, greeting);
+
+
+    // guessing game
+    guessing_game::guessing_game();
 }
