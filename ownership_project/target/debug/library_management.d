@@ -1,0 +1,1 @@
+/home/musta/rust_teorie/ownership_project/target/debug/library_management: /home/musta/rust_teorie/ownership_project/src/book.rs /home/musta/rust_teorie/ownership_project/src/library.rs /home/musta/rust_teorie/ownership_project/src/main.rs
