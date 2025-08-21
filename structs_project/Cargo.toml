@@ -1,0 +1,8 @@
+[package]
+name = "geometry_calculator"
+version = "0.1.0"
+edition = "2024"
+authors = ["Rust Öğrencisi"]
+description = "Struct'ları öğrenmek için geometri hesaplayıcısı"
+
+[dependencies]
