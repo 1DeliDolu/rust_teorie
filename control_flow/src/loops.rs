@@ -1,25 +1,13 @@
 
 
 pub fn loop_example() {
-    let mut count = 0;
-    'counting_up: loop {
-        println!("count = {count}");
-        let mut remaining = 10;
+    let mut number = 3;
 
-        loop {
-            println!("remaining = {remaining}");
-            if remaining == 9 {
-                break;
-            }
-            if count == 2 {
-                break 'counting_up;
-            }
-            remaining -= 1;
-        }
+    while number != 0 {
+        println!("{number}!");
 
-        count += 1;
+        number -= 1;
     }
-    println!("End count = {count}");
 
-    
-}   
+    println!("LIFTOFF!!!");
+}
