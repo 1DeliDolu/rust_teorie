@@ -1,7 +1,11 @@
 pub fn control_flow_example(number: i32) {
-    if number < 10 {
-        println!("The number is less than 10");
+    if number % 4 == 0 {
+        println!("number is divisible by 4");
+    } else if number % 3 == 0 {
+        println!("number is divisible by 3");
+    } else if number % 2 == 0 {
+        println!("number is divisible by 2");
     } else {
-        println!("The number is 10 or greater");
+        println!("number is not divisible by 4, 3, or 2");
     }
 }

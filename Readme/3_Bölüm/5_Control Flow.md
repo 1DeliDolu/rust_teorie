@@ -207,6 +207,7 @@ error[E0308]: `if` and `else` have incompatible types
 `if` bloğundaki ifade bir tamsayıya (`i32`) dönüşürken, `else` bloğundaki ifade bir string’e (`&str`) dönüşmektedir. Bu çalışmaz, çünkü bir değişken yalnızca tek bir türe sahip olabilir ve Rust derleyici zamanı (compile time) sırasında bu türü kesin olarak bilmek zorundadır.
 
 `number` değişkeninin türünü bilmek, derleyicinin her kullanım noktasında türün geçerli olup olmadığını doğrulamasına olanak tanır. Eğer tür ancak çalışma zamanında (runtime) belirlenmiş olsaydı, derleyici çok daha karmaşık hale gelir ve kod hakkında daha az garanti verebilirdi.
+
 ## 🔁 Döngülerle Tekrar (repetition with loops)
 
 Bir kod bloğunu birden fazla kez çalıştırmak çoğu zaman faydalıdır. Bu görev için Rust, döngüler (loops) sağlar. Döngüler, gövdesindeki kodu çalıştırır, sona gelir ve hemen baştan tekrar etmeye başlar.
