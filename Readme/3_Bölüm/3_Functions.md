@@ -189,6 +189,7 @@ bir bloktur ve bu durumda `4` değerine dönüşür. Bu değer, `let` deyiminin 
 Dikkat edin, `x + 1` satırının sonunda noktalı virgül (`;`) yoktur. Bu, şimdiye kadar gördüğünüz çoğu satırdan farklıdır. İfadelerin sonunda noktalı virgül bulunmaz. Bir ifadenin sonuna noktalı virgül eklerseniz, onu bir deyime dönüştürmüş olursunuz ve artık bir değer döndürmez.
 
 Bunu, fonksiyon dönüş değerlerini ve ifadeleri incelerken aklınızda tutmalısınız.
+
 ## 🔄 Dönüş Değerine Sahip Fonksiyonlar (functions with return values)
 
 Fonksiyonlar (functions), kendilerini çağıran koda değer döndürebilir. Dönüş değerlerine bir isim vermeyiz, ancak türünü `->` işaretinden sonra belirtmemiz gerekir. Rust’ta bir fonksiyonun dönüş değeri, fonksiyon gövdesindeki bloğun son ifadesinin (expression) değeri ile aynıdır.
