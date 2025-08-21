@@ -190,6 +190,7 @@ Unicode skaler değer aralıkları:
 * `U+E000` ile `U+10FFFF`
 
 Ancak, Unicode’da “karakter” kavramı aslında açık bir şekilde tanımlı değildir. Bu nedenle, insani sezginizle “karakter” olarak düşündüğünüz şey her zaman Rust’taki `char` ile örtüşmeyebilir. Bu konuyu Bölüm 8’deki **“UTF-8 Kodlu Metni Stringlerle Saklamak”** kısmında ayrıntılı olarak inceleyeceğiz.
+
 ## 🧩 Bileşik Türler (compound types)
 
 Bileşik türler (compound types), birden fazla değeri tek bir tür altında gruplamanıza olanak tanır. Rust’ta iki temel bileşik tür vardır: `tuple` ve `array`.
