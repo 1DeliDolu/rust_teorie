@@ -2,11 +2,24 @@
 
 pub fn loop_example() {
     let mut count = 0;
-    loop {
-        count += 1;
-        if count == 5 {
-            break;
+    'counting_up: loop {
+        println!("count = {count}");
+        let mut remaining = 10;
+
+        loop {
+            println!("remaining = {remaining}");
+            if remaining == 9 {
+                break;
+            }
+            if count == 2 {
+                break 'counting_up;
+            }
+            remaining -= 1;
         }
-        println!("Count is: {}", count);
+
+        count += 1;
     }
+    println!("End count = {count}");
+
+    
 }   
