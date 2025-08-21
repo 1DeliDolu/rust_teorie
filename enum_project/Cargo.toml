@@ -1,0 +1,8 @@
+[package]
+authors = ["Rust Öğrencisi"]
+description = "Enum ve Pattern Matching öğrenmek için RPG oyunu"
+name = "rpg_game"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
