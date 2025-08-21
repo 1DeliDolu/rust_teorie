@@ -1,0 +1,18 @@
+[workspace]
+resolver = "2"
+members = [
+    "core",
+    "cli",
+    "web"
+]
+
+# Workspace-wide dependencies
+[workspace.dependencies]
+serde = { version = "1.0", features = ["derive"] }
+chrono = { version = "0.4", features = ["serde"] }
+uuid = { version = "1.0", features = ["v4"] }
+thiserror = "1.0"
+
+# Development dependencies
+[workspace.dev-dependencies]
+tokio-test = "0.4"
