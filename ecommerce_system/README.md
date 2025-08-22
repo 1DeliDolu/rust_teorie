@@ -53,6 +53,7 @@ core/src/
 ## 🚀 Features
 
 ### 📦 Core Library (`ecommerce-core`)
+
 - **Product Management**: Catalog, inventory, search functionality
 - **User System**: Authentication, profiles, role-based access
 - **Order Processing**: Shopping cart, order lifecycle, payments
@@ -60,12 +61,14 @@ core/src/
 - **Type Safety**: Strong typing with UUID, Decimal, DateTime
 
 ### 🖥️ CLI Application (`ecommerce-cli`)
+
 - **Interactive Commands**: Product, user, and order management
 - **Demo Workflow**: Complete e-commerce flow demonstration
 - **Colored Output**: Beautiful terminal interface
 - **Async Operations**: Non-blocking command execution
 
 ### 🌐 Web API Server (`ecommerce-web`)
+
 - **REST API**: JSON endpoints for all operations
 - **Search & Filtering**: Advanced product search capabilities
 - **Authentication**: User registration and login
@@ -87,6 +90,7 @@ core/src/
 ## 🏃‍♂️ Quick Start
 
 ### Prerequisites
+
 - Rust 1.70+ installed ([rustup.rs](https://rustup.rs/))
 - Git for cloning the repository
 
@@ -94,7 +98,7 @@ core/src/
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/1DeliDolu/rust_teorie.git
 cd ecommerce_system
 
 # Build all crates
@@ -132,31 +136,31 @@ cargo run --bin ecommerce-cli --help
 # Start the web server
 cargo run --bin ecommerce-web
 
-# Server will start on http://127.0.0.1:3000
+# Server will start on http://127.0.0.1:3004
 ```
 
 ### 📡 API Testing
 
 ```bash
 # Health check
-curl http://127.0.0.1:3000/health
+curl http://127.0.0.1:3004/health
 
 # List products
-curl http://127.0.0.1:3000/api/products
+curl http://127.0.0.1:3004/api/products
 
 # Featured products
-curl http://127.0.0.1:3000/api/products/featured
+curl http://127.0.0.1:3004/api/products/featured
 
 # Search products
-curl "http://127.0.0.1:3000/api/products?category=electronics&limit=5"
+curl "http://127.0.0.1:3004/api/products?category=electronics&limit=5"
 
 # User login
-curl -X POST http://127.0.0.1:3000/api/auth/login \
+curl -X POST http://127.0.0.1:3004/api/auth/login \
   -H "Content-Type: application/json" \
   -d '{"email": "customer@example.com", "password": "customer123"}'
 
 # Create product
-curl -X POST http://127.0.0.1:3000/api/products \
+curl -X POST http://127.0.0.1:3004/api/products \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Wireless Mouse",
@@ -172,12 +176,14 @@ curl -X POST http://127.0.0.1:3000/api/products \
 ### 🎓 Module Organization Concepts
 
 1. **Public vs Private Modules**
+
    ```rust
    pub mod products;    // Public - accessible from outside
    mod utils;          // Private - internal only
    ```
 
 2. **Visibility Levels**
+
    ```rust
    pub fn public_function();              // Public to all
    pub(crate) fn crate_function();        // Public within crate
@@ -186,6 +192,7 @@ curl -X POST http://127.0.0.1:3000/api/products \
    ```
 
 3. **Path Types**
+
    ```rust
    use crate::error::Result;              // Absolute path
    use super::Product;                    // Relative path (parent)
@@ -283,10 +290,10 @@ type ApiResult<T> = std::result::Result<Json<T>, ApiError>;
 pub enum EcommerceError {
     #[error("Product not found: {id}")]
     ProductNotFound { id: String },
-    
+
     #[error("Invalid email address: {email}")]
     InvalidEmail { email: String },
-    
+
     #[error("Validation error: {message}")]
     ValidationError { message: String },
 }
@@ -335,4 +342,4 @@ If you have questions about Rust module organization or this project:
 
 ⭐ **Star this repository if it helped you learn Rust module organization!**
 
-*This project demonstrates professional Rust development patterns and serves as a comprehensive learning resource for module organization, workspace management, and real-world application development.*
+_This project demonstrates professional Rust development patterns and serves as a comprehensive learning resource for module organization, workspace management, and real-world application development._

@@ -177,6 +177,28 @@ struct RegisterRequest {
 }
 
 // API Handlers
+async fn welcome() -> Json<serde_json::Value> {
+    Json(serde_json::json!({
+        "service": "E-Commerce API Server",
+        "version": "1.0.0",
+        "description": "Rust E-Commerce System - Module Organization Demo",
+        "endpoints": {
+            "health": "/health",
+            "products": {
+                "list": "/api/products",
+                "featured": "/api/products/featured",
+                "get_by_id": "/api/products/:id",
+                "create": "POST /api/products"
+            },
+            "auth": {
+                "login": "POST /api/auth/login",
+                "register": "POST /api/auth/register"
+            }
+        },
+        "documentation": "See README.md for full API documentation"
+    }))
+}
+
 async fn health_check() -> Json<serde_json::Value> {
     Json(serde_json::json!({
         "status": "ok",
@@ -339,6 +361,9 @@ async fn main() -> WebResult<()> {
     
     // Build router with different route patterns
     let app = Router::new()
+        // Root welcome endpoint
+        .route("/", get(welcome))
+        
         // Health check endpoint
         .route("/health", get(health_check))
         
