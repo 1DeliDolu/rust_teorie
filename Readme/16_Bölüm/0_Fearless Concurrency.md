@@ -1,0 +1,16 @@
+## ⚡ Korkusuz Eşzamanlılık (fearless concurrency)
+
+Eşzamanlı (concurrent) programlamayı güvenli ve verimli bir şekilde ele almak, Rust’ın ana hedeflerinden biridir. Bir programın farklı bölümlerinin birbirinden bağımsız çalıştığı eşzamanlı programlama (concurrent programming) ve farklı bölümlerin aynı anda çalıştığı paralel programlama (parallel programming), bilgisayarların çoklu işlemcilerinden daha fazla yararlanmasıyla giderek daha önemli hale gelmektedir. Tarihsel olarak bu bağlamlarda programlama zor ve hataya açık olmuştur. Rust bunu değiştirmeyi amaçlamaktadır.
+
+Başlangıçta Rust ekibi, bellek güvenliğini (memory safety) sağlamak ile eşzamanlılık sorunlarını (concurrency problems) önlemenin iki ayrı zorluk olduğunu ve farklı yöntemlerle çözülmesi gerektiğini düşünüyordu. Zamanla ekip, sahiplik (ownership) ve tür (type) sistemlerinin bellek güvenliği ve eşzamanlılık sorunlarını yönetmek için güçlü araçlar olduğunu keşfetti! Sahiplik ve tür kontrolünden yararlanarak birçok eşzamanlılık hatası, Rust’ta çalışma zamanı (runtime) hataları yerine derleme zamanı (compile-time) hataları haline gelir. Bu nedenle, bir eşzamanlılık hatasının oluştuğu koşulları yeniden üretmeye çalışarak çok zaman harcamak yerine, hatalı kod derlenmeyecek ve sorunu açıklayan bir hata mesajı verecektir. Bunun sonucu olarak, kodunuzu üzerinde çalışırken düzeltebilir, üretime (production) geçtikten sonra düzeltmek zorunda kalmazsınız. Rust bu yönüne korkusuz eşzamanlılık (fearless concurrency) adını vermektedir. Korkusuz eşzamanlılık, ince hatalardan arınmış ve yeniden düzenlemeye (refactoring) açık kod yazmanıza olanak tanır.
+
+Not: Basitlik açısından, birçok sorunu paralel (parallel) demek daha kesin olsa da eşzamanlı (concurrent) olarak adlandıracağız. Bu bölümde “concurrent” kelimesini gördüğünüzde, zihninizde “concurrent ve/veya parallel” ile değiştirin. Bir sonraki bölümde bu ayrım daha önemli olduğunda daha kesin olacağız.
+
+Birçok dil, eşzamanlı sorunları çözmek için sundukları çözümler konusunda katıdır. Örneğin, Erlang mesaj iletimli eşzamanlılık (message-passing concurrency) için şık bir işlevselliğe sahiptir, ancak iş parçacıkları (threads) arasında durumu paylaşmak için yalnızca dolaylı yollar sunar. Yalnızca olası çözümlerin bir alt kümesini desteklemek, daha yüksek seviyeli (high-level) diller için makul bir stratejidir; çünkü daha yüksek seviyeli bir dil, bazı kontrollerden vazgeçerek soyutlamalar (abstractions) kazanmayı vaat eder. Ancak daha düşük seviyeli (low-level) dillerin, donanım (hardware) üzerinde daha az soyutlama ile her durumda en iyi performansı sağlayan çözümü sunması beklenir. Bu nedenle Rust, sorunları sizin durumunuza ve gereksinimlerinize en uygun şekilde modellemek için çeşitli araçlar sunar.
+
+Bu bölümde ele alacağımız konular şunlardır:
+
+* Aynı anda birden fazla kod parçasını çalıştırmak için iş parçacıkları (threads) oluşturma
+* Kanallar (channels) üzerinden iş parçacıkları arasında mesaj iletimi (message-passing concurrency)
+* Birden fazla iş parçacığının aynı veriye eriştiği paylaşılan durumlu eşzamanlılık (shared-state concurrency)
+* Rust’ın eşzamanlılık garantilerini hem standart kütüphanedeki türlere hem de kullanıcı tanımlı türlere genişleten `Sync` ve `Send` öznitelikleri (traits)
