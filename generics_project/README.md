@@ -1,93 +1,149 @@
 # generics_project
 
-Küçük, öğretici Rust örnekleriyle `generics`, `traits` ve `lifetimes` konularını gösteren bir proje.
+Modern, öğretici örneklerle Rust generics, traits ve lifetimes konularını gösteren küçük bir kütüphane.
 
-Bu crate eğitim amaçlıdır — her örnek tek bir kavramı açıklamak için sade ve okunabilir tutulmuştur.
+Bu proje `Readme/Rust/10_Bölüm` içeriğine paralel olarak hazırlanmıştır ve aşağıdaki konuları hedefler:
 
-## Hızlı başlangıç
+- Generic veri tipleri ve fonksiyonlar
+- Trait tanımları ve trait bound kullanımı
+- Lifetime'lar ve referans doğrulamaları
 
-Geliştirme ortamında projeyi çalıştırmak ve test etmek için:
+## Öne çıkanlar
 
-```sh
+- `Pair<T>`: generic bir yapı ve `Printable` trait implementasyonu
+- `largest<T>`: generic fonksiyon (PartialOrd + Copy)
+- `first_word`: &str ile basit parsing örneği
+- `ImportantExcerpt<'a>`: lifetime kullanan struct örneği
+- Detaylı örnekler: `examples/generics.rs`, `examples/traits.rs`, `examples/lifetimes.rs`
+
+## Başlarken
+
+Projeyi çalıştırmak ve test etmek için:
+
+```bash
+cd /mnt/d/rust_teorie/generics_project
 cargo test
-cargo run --example usage
+cargo run --example generics    # Generic types örnekleri
+cargo run --example traits      # Traits örnekleri
+cargo run --example lifetimes   # Lifetimes örnekleri
+cargo run --example usage       # Genel kullanım örneği
 ```
 
-## Öğrenme hedefleri
+## Detaylı Örnekler
 
-- Generic türlerin (type parameters) ne zaman ve nasıl kullanılacağını öğrenmek
-- Trait tanımları ve implementasyon örnekleri görmek
-- `PartialOrd`/`Copy` gibi trait bound'ları kullanarak generic fonksiyonlar yazmak
-- Lifetime'ların temel kullanımını `ImportantExcerpt<'a>` örneğinde görmek
+### 1. Generic Types (`examples/generics.rs`)
 
-## Projedeki önemli parçalar
+Generic türlerin nasıl çalıştığını gösteren kapsamlı örnek:
 
-- `Pair<T>`: Generic bir yapı. Basit bir `Printable` benzeri trait implementasyonu ile nasıl genişletilebileceği gösteriliyor.
-- `largest`: Generic bir fonksiyon; `PartialOrd` ve `Copy` trait bound'ları ile nasıl güvenli bir karşılaştırma yapılacağını gösterir.
-- `first_word`: `&str` üzerinde basit parsing örneği — string dilimlerinin (slices) nasıl çalıştığını açıklar.
-- `ImportantExcerpt<'a>`: Lifetime kullanan bir struct örneği; kısa bir lifetime açıklamasıyla birlikte.
+```bash
+cargo run --example generics
+```
 
-Dosya yapısı (özet):
+Bu örnek şunları gösterir:
 
-- `src/lib.rs` — crate içindeki örnek fonksiyonlar ve türler
-- `src/main.rs` — (varsa) küçük runnable örnekler / demo
-- `examples/usage.rs` — `cargo run --example usage` ile çalıştırılabilen örnek kullanım
+- `Pair<T>` struct'ı farklı türlerle (i32, String)
+- `largest<T>` fonksiyonu sayılar ve karakterlerle
+- `first_word` fonksiyonu string parsing için
+- Tüm örnekler assertion'larla test edilir
 
-## Kısa API örnekleri
+### 2. Traits (`examples/traits.rs`)
 
-Pair örneği (özet):
+Trait tanımları ve kullanım örnekleri:
+
+```bash
+cargo run --example traits
+```
+
+Bu örnek şunları gösterir:
+
+- `Printable` trait implementasyonu
+- Generic fonksiyonlarda trait bound kullanımı
+- `where` clause alternatif syntax
+- Farklı türlerle trait kullanımı
+
+### 3. Lifetimes (`examples/lifetimes.rs`)
+
+Lifetime'ların nasıl çalıştığını gösteren örnekler:
+
+```bash
+cargo run --example lifetimes
+```
+
+Bu örnek şunları gösterir:
+
+- `ImportantExcerpt<'a>` struct kullanımı
+- Custom lifetime fonksiyonları
+- Scope ve lifetime ilişkisi
+- Pratik lifetime senaryoları
+
+## API Referansı
+
+### `Pair<T>`
 
 ```rust
-// Pair<T> bir çift tutar ve T herhangi bir tür olabilir
-struct Pair<T> { first: T, second: T }
+pub struct Pair<T> {
+    pub a: T,
+    pub b: T,
+}
 
-impl<T: std::fmt::Display> Pair<T> {
-    fn print(&self) {
-        println!("Pair: {} and {}", self.first, self.second);
-    }
+impl<T: Display + Clone> Pair<T> {
+    pub fn new(a: T, b: T) -> Self
+    pub fn swap(&mut self)
 }
 ```
 
-`largest` fonksiyonu (özet):
+### `largest<T>`
 
 ```rust
-fn largest<T: PartialOrd + Copy>(list: &[T]) -> T {
-    let mut largest = list[0];
-    for &item in list.iter() {
-        if item > largest {
-            largest = item;
-        }
-    }
-    largest
+pub fn largest<T: PartialOrd + Copy>(slice: &[T]) -> Option<T>
+```
+
+### `first_word`
+
+```rust
+pub fn first_word(s: &str) -> &str
+```
+
+### `ImportantExcerpt<'a>`
+
+```rust
+pub struct ImportantExcerpt<'a> {
+    pub part: &'a str,
 }
 ```
 
-`ImportantExcerpt<'a>` (özet):
+## Testler
 
-```rust
-struct ImportantExcerpt<'a> {
-    part: &'a str,
-}
+Projede birim testleri `src/lib.rs` içinde yer alır:
+
+```bash
+cargo test
 ```
 
-Bu örnekler, crate içindeki gerçek implementasyonların sadeleştirilmiş versiyonlarıdır; detaylar `src/` içinde bulunmaktadır.
+Ayrıca örnekler de CI'da otomatik test edilir ve assertion'larla doğrulanır.
 
-## Yaygın tuzaklar / ipuçları
+## CI / Kalite Kontrolleri
 
-- Generic parametreleri gereksiz yere kısıtlamayın — sadece ihtiyaç duyduğunuz trait bound'ları ekleyin.
-- Lifetime'lar genelde ilk başta kafa karıştırır; önce sahiplik ve borçlanma (ownership & borrowing) mantığını sağlamlaştırın.
-- `Copy` trait'ini sadece gerçekten kopyalanması ucuz olan türler için kullanın.
+Bu proje kapsamlı CI içerir (`.github/workflows/ci.yml`):
 
-## Önerilen alıştırmalar
+- Format check (`cargo fmt`)
+- Linting (`cargo clippy`)
+- Build ve test (stable, beta, nightly)
+- Example testing (tüm örneklerin çalıştırılması)
+- Latest dependencies test
+- MSRV (Minimum Supported Rust Version) check
 
-1. `Pair<T>`'a `swap` metodu ekleyin.
-2. `largest` fonksiyonunu `Clone` kullanarak `Copy` yerine nasıl yazabileceğinizi deneyin.
-3. `ImportantExcerpt`'a bir method ekleyip, lifetime kurallarını gözlemleyin.
+## Öğrenme Kaynakları
 
-## Katkıda bulunma
+Bu proje `d:\rust_teorie\Readme\Rust\10_Bölüm` içindeki dokümanlara uygun örnekler içerir:
 
-Küçük düzeltmeler, ek açıklamalar veya daha fazla örnek için PR gönderebilirsiniz. Kod stili olarak Rust'un resmi stil rehberine (rustfmt) uyulması tercih edilir.
+- `0_Generic Types, Traits, and Lifetimes.md`
+- `1_Generic Data Types.md`
+- `2_Traits Defining Shared Behavior.md`
+- `3_Validating References with Lifetimes.md`
 
-## Lisans
+## Geliştirme
 
-Varsa proje lisansınızı buraya ekleyin; küçük eğitim projeleri için genelde MIT veya Apache-2.0 tercih edilir.
+- Kod stilini korumak için `cargo fmt` kullanın
+- Linting için `cargo clippy` çalıştırın
+- Yeni örnekler eklerken assertion'lar eklemeyi unutmayın

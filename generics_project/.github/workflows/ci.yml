@@ -27,9 +27,10 @@ jobs:
             target
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
       - name: Install toolchain
-        uses: rust-lang/setup-rust@v1
+        uses: actions-rs/toolchain@v1
         with:
-          rust-version: ${{ matrix.toolchain }}
+          toolchain: ${{ matrix.toolchain }}
+          override: true
       - name: Format check
         run: cargo fmt -- --check
       - name: Clippy (lint)
@@ -38,6 +39,11 @@ jobs:
         run: cargo build --verbose
       - name: Test
         run: cargo test --verbose
+      - name: Test examples
+        run: |
+          cargo run --example generics
+          cargo run --example traits  
+          cargo run --example lifetimes
 
   latest_deps:
     name: Latest Dependencies
@@ -46,11 +52,11 @@ jobs:
     env:
       CARGO_RESOLVER_INCOMPATIBLE_RUST_VERSIONS: allow
     steps:
-      - uses: actions/checkout@v4
       - name: Install stable toolchain
-        uses: rust-lang/setup-rust@v1
+        uses: actions-rs/toolchain@v1
         with:
-          rust-version: stable
+          toolchain: stable
+          override: true
       - name: Update deps
         run: cargo update --verbose
       - name: Build with latest deps (may fail)
