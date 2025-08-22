@@ -1,0 +1,15 @@
+D:\rust_teorie\get-dependencies\target\debug\deps\markup5ever-31f020bca66ad505.d: C:\Users\musta\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\markup5ever-0.12.1\lib.rs C:\Users\musta\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\markup5ever-0.12.1\data\mod.rs C:\Users\musta\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\markup5ever-0.12.1\interface\mod.rs C:\Users\musta\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\markup5ever-0.12.1\interface\tree_builder.rs C:\Users\musta\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\markup5ever-0.12.1\serialize.rs C:\Users\musta\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\markup5ever-0.12.1\util\buffer_queue.rs C:\Users\musta\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\markup5ever-0.12.1\util\smallcharset.rs D:\rust_teorie\get-dependencies\target\debug\build\markup5ever-1be8703bbb9b4e37\out/generated.rs D:\rust_teorie\get-dependencies\target\debug\build\markup5ever-1be8703bbb9b4e37\out/named_entities.rs
+
+D:\rust_teorie\get-dependencies\target\debug\deps\libmarkup5ever-31f020bca66ad505.rmeta: C:\Users\musta\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\markup5ever-0.12.1\lib.rs C:\Users\musta\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\markup5ever-0.12.1\data\mod.rs C:\Users\musta\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\markup5ever-0.12.1\interface\mod.rs C:\Users\musta\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\markup5ever-0.12.1\interface\tree_builder.rs C:\Users\musta\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\markup5ever-0.12.1\serialize.rs C:\Users\musta\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\markup5ever-0.12.1\util\buffer_queue.rs C:\Users\musta\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\markup5ever-0.12.1\util\smallcharset.rs D:\rust_teorie\get-dependencies\target\debug\build\markup5ever-1be8703bbb9b4e37\out/generated.rs D:\rust_teorie\get-dependencies\target\debug\build\markup5ever-1be8703bbb9b4e37\out/named_entities.rs
+
+C:\Users\musta\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\markup5ever-0.12.1\lib.rs:
+C:\Users\musta\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\markup5ever-0.12.1\data\mod.rs:
+C:\Users\musta\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\markup5ever-0.12.1\interface\mod.rs:
+C:\Users\musta\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\markup5ever-0.12.1\interface\tree_builder.rs:
+C:\Users\musta\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\markup5ever-0.12.1\serialize.rs:
+C:\Users\musta\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\markup5ever-0.12.1\util\buffer_queue.rs:
+C:\Users\musta\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\markup5ever-0.12.1\util\smallcharset.rs:
+D:\rust_teorie\get-dependencies\target\debug\build\markup5ever-1be8703bbb9b4e37\out/generated.rs:
+D:\rust_teorie\get-dependencies\target\debug\build\markup5ever-1be8703bbb9b4e37\out/named_entities.rs:
+
+# env-dep:OUT_DIR=D:\\rust_teorie\\get-dependencies\\target\\debug\\build\\markup5ever-1be8703bbb9b4e37\\out

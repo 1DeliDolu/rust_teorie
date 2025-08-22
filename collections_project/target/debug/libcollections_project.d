@@ -1,0 +1,1 @@
+/mnt/d/rust_teorie/collections_project/target/debug/libcollections_project.rlib: /mnt/d/rust_teorie/collections_project/src/book.rs /mnt/d/rust_teorie/collections_project/src/lib.rs /mnt/d/rust_teorie/collections_project/src/library.rs
