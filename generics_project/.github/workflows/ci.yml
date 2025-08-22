@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "0 3 * * 0"
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    name: Build and Test (${{ matrix.toolchain }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        toolchain: [stable, beta, nightly]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cache cargo registry & target
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+      - name: Install toolchain
+        uses: rust-lang/setup-rust@v1
+        with:
+          rust-version: ${{ matrix.toolchain }}
+      - name: Format check
+        run: cargo fmt -- --check
+      - name: Clippy (lint)
+        run: cargo clippy --all-targets --all-features -- -D warnings
+      - name: Build
+        run: cargo build --verbose
+      - name: Test
+        run: cargo test --verbose
+
+  latest_deps:
+    name: Latest Dependencies
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    env:
+      CARGO_RESOLVER_INCOMPATIBLE_RUST_VERSIONS: allow
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install stable toolchain
+        uses: rust-lang/setup-rust@v1
+        with:
+          rust-version: stable
+      - name: Update deps
+        run: cargo update --verbose
+      - name: Build with latest deps (may fail)
+        run: cargo build --verbose || true
+      - name: Test with latest deps (may fail)
+        run: cargo test --verbose || true
+
+  msrv:
+    name: MSRV check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install cargo-hack
+        run: cargo install cargo-hack --force
+      - name: MSRV check (cargo-hack)
+        run: cargo hack check --rust-version --workspace --all-targets --ignore-private

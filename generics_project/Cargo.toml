@@ -1,0 +1,9 @@
+[package]
+name = "generics_project"
+version = "0.1.0"
+edition = "2021"
+description = "Examples for generics, traits and lifetimes"
+license = "MIT"
+repository = "https://example.com/"
+
+[dependencies]
